@@ -2,6 +2,10 @@ const promClient = require('prom-client');
 
 const register = new promClient.Registry();
 
+// Default metrics (CPU, memory, etc.)
+// NOTE: Commented out to avoid duplicate registration - called in app.js instead
+// promClient.collectDefaultMetrics({ register });
+
 // Custom metrics
 const httpDuration = new promClient.Histogram({
   name: 'http_request_duration_seconds',
