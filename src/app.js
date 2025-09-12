@@ -62,6 +62,10 @@ app.get('/metrics', async (req, res) => {
   res.end(await register.metrics());
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Node.js Performance Lab API. Visit /metrics for Prometheus metrics.');
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ 
