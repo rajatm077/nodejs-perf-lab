@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-perf-lab",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "stress": "node stress-test/basic-load.js",
+    "stress:k6": "k6 run stress-test/k6-script.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "ioredis": "^5.3.2",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.0",
+    "morgan": "^1.10.0",
+    "prom-client": "^14.2.0",
+    "redis": "^4.6.7",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "autocannon": "^7.12.0",
+    "k6": "latest",
+    "nodemon": "^3.0.1"
+  }
+}
