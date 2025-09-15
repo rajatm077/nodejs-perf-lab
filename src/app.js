@@ -30,15 +30,16 @@ app.use(morgan('combined'));
 // Prometheus metrics middleware
 app.use((req, res, next) => {
   const start = Date.now();
-  
+  const originalPath = req.path;
   res.on('finish', () => {
     const duration = Date.now() - start;
+    console.log(`${req.method} ${originalPath} ${res.statusCode} - ${duration}ms`);
     httpDuration
-      .labels(req.method, req.route?.path || req.path, res.statusCode.toString())
+      .labels(req.method, originalPath, res.statusCode.toString())
       .observe(duration / 1000);
     
     httpRequestCounter
-      .labels(req.method, req.route?.path || req.path, res.statusCode.toString())
+      .labels(req.method, originalPath, res.statusCode.toString())
       .inc();
   });
   
